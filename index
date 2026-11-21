@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <!-- SheetJS for Reading Uploaded Wage Sheet & Downloading Format -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
   <style>
@@ -80,11 +79,29 @@
       text-transform: uppercase;
     }
 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
     .nav-subtitle {
       font-size: 12.5px;
       color: #cbd5e1;
       font-weight: 600;
     }
+
+    .btn-nav-track {
+      background: #1e293b;
+      color: #38bdf8;
+      border: 1px solid #334155;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-nav-track:hover { background: #334155; }
 
     /* Top Disclaimer Strip */
     .top-disclaimer-strip {
@@ -97,10 +114,7 @@
       line-height: 1.45;
     }
 
-    .top-disclaimer-strip strong {
-      color: #78350f;
-    }
-
+    .top-disclaimer-strip strong { color: #78350f; }
     .top-disclaimer-strip a {
       color: #1d4ed8;
       font-weight: 700;
@@ -179,9 +193,7 @@
       .order-card { padding: 20px; }
     }
 
-    .form-group {
-      margin-bottom: 16px;
-    }
+    .form-group { margin-bottom: 16px; }
 
     .form-group label {
       display: block;
@@ -300,6 +312,13 @@
       color: var(--slate-800);
     }
 
+    .copy-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
     .upi-badge {
       display: inline-block;
       background: #ffffff;
@@ -309,7 +328,25 @@
       font-weight: 800;
       color: #1d4ed8;
       font-size: 14px;
-      margin: 4px 0 10px 0;
+      margin: 4px 0 8px 0;
+    }
+
+    .btn-copy {
+      background: #e2e8f0;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-copy:hover { background: #cbd5e1; }
+    .btn-copy.copied {
+      background: #dcfce7;
+      border-color: #86efac;
+      color: #166534;
     }
 
     .bank-card {
@@ -319,7 +356,7 @@
       padding: 10px 14px;
       margin-top: 8px;
       font-size: 13px;
-      line-height: 1.6;
+      line-height: 1.75;
     }
 
     .bank-card-title {
@@ -453,6 +490,92 @@
       margin: 0 auto 20px auto;
     }
 
+    /* Live Order Status Tracker Section */
+    .tracker-section {
+      max-width: 820px;
+      width: 100%;
+      margin: 0 auto 24px auto;
+      padding: 0 16px;
+    }
+
+    .tracker-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      padding: 22px 26px;
+      box-shadow: 0 10px 25px -10px rgba(15, 23, 42, 0.08);
+    }
+
+    .tracker-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin: 0 0 4px 0;
+    }
+
+    .tracker-sub {
+      font-size: 13px;
+      color: var(--slate-600);
+      margin: 0 0 14px 0;
+    }
+
+    .tracker-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tracker-form input {
+      flex: 1;
+      min-width: 220px;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      font-size: 13.5px;
+      font-family: inherit;
+    }
+
+    .btn-track {
+      background: #1d4ed8;
+      color: #ffffff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: var(--radius-md);
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-track:hover { background: #1e3a8a; }
+
+    .tracker-results {
+      margin-top: 14px;
+      font-size: 13px;
+    }
+
+    .track-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .status-pending { background: #fef3c7; color: #92400e; }
+    .status-progress { background: #dbeafe; color: #1e40af; }
+    .status-completed { background: #dcfce7; color: #166534; }
+
     /* Governance, Statutory Rules, IT Policy & Disclaimer Card */
     .legal-governance-section {
       max-width: 820px;
@@ -474,9 +597,6 @@
       font-weight: 800;
       color: var(--slate-900);
       margin: 0 0 6px 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
     .legal-header-sub {
@@ -506,10 +626,7 @@
       user-select: none;
     }
 
-    details.rule-accordion summary::-webkit-details-marker {
-      display: none;
-    }
-
+    details.rule-accordion summary::-webkit-details-marker { display: none; }
     details.rule-accordion summary::after {
       content: "+";
       font-size: 18px;
@@ -517,10 +634,7 @@
       color: #1d4ed8;
     }
 
-    details.rule-accordion[open] summary::after {
-      content: "−";
-    }
-
+    details.rule-accordion[open] summary::after { content: "−"; }
     details.rule-accordion[open] summary {
       background: #eff6ff;
       color: #1e3a8a;
@@ -540,9 +654,7 @@
       padding-left: 20px;
     }
 
-    .rule-content li {
-      margin-bottom: 6px;
-    }
+    .rule-content li { margin-bottom: 6px; }
 
     .disclaimer-callout {
       background: #fffbeb;
@@ -615,10 +727,7 @@
       gap: 8px;
     }
 
-    .service-check {
-      color: #2dd4bf;
-      font-weight: 800;
-    }
+    .service-check { color: #2dd4bf; font-weight: 800; }
 
     .cta-banner {
       background: rgba(30, 58, 138, 0.45);
@@ -685,15 +794,36 @@
       text-decoration: none;
       cursor: pointer;
     }
-
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
+    .footer-links a:hover { text-decoration: underline; }
 
     .footer-copy {
       font-size: 12px;
       color: #94a3b8;
       margin-top: 10px;
+    }
+
+    /* Floating WhatsApp Help Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      background: #16a34a;
+      color: #ffffff;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 25px rgba(22, 163, 74, 0.38);
+      z-index: 90;
+      transition: transform 0.15s;
+    }
+    .whatsapp-float:hover {
+      transform: translateY(-2px);
+      background: #15803d;
     }
 
     /* Policy Pop-up Modal */
@@ -758,7 +888,12 @@
         <span>EASY COMPLIANCE SOLUTIONS</span>
         <span class="brand-badge">Private Consultancy Portal</span>
       </div>
-      <div class="nav-subtitle">YOUR COMPLIANCE, OUR RESPONSIBILITY!</div>
+      <div class="nav-actions">
+        <span class="nav-subtitle">YOUR COMPLIANCE, OUR RESPONSIBILITY!</span>
+        <button type="button" class="btn-nav-track" onclick="document.getElementById('trackerSection').scrollIntoView({behavior:'smooth'})">
+          Track Order
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -843,20 +978,29 @@
             <input type="file" id="companySignFile" accept="image/*,.pdf" required />
           </div>
 
-          <!-- PhonePe QR, UPI & Canara Bank Payment Box -->
+          <!-- Static PhonePe QR, UPI & Canara Bank Payment Box -->
           <div class="payment-box">
             <div class="upi-info">
               <div style="font-weight: 800; font-size: 15px; color: #0f172a;">Pay via QR, UPI or Bank Transfer</div>
               <div>Payable Amount: <strong id="qrAmountText" style="color: #0f766e; font-size: 16px;">₹20</strong> <span style="font-size:12px; color:#475569;">(₹20 × Person Count)</span></div>
 
               <div style="margin-top: 6px; font-weight: 700;">UPI ID:</div>
-              <div class="upi-badge">easycompliancesolutions@axl</div>
+              <div class="copy-row">
+                <span class="upi-badge">easycompliancesolutions@axl</span>
+                <button type="button" class="btn-copy" onclick="copyText('easycompliancesolutions@axl', this)">Copy UPI</button>
+              </div>
 
               <div class="bank-card">
                 <div class="bank-card-title">Bank Account Details (NEFT / IMPS / RTGS)</div>
                 <div><strong>Bank Name:</strong> Canara Bank</div>
-                <div><strong>Account Number:</strong> 2839120000371</div>
-                <div><strong>IFSC Code:</strong> CNRB0002839</div>
+                <div>
+                  <strong>Account Number:</strong> 2839120000371
+                  <button type="button" class="btn-copy" onclick="copyText('2839120000371', this)">Copy A/C</button>
+                </div>
+                <div>
+                  <strong>IFSC Code:</strong> CNRB0002839
+                  <button type="button" class="btn-copy" onclick="copyText('CNRB0002839', this)">Copy IFSC</button>
+                </div>
               </div>
             </div>
 
@@ -910,6 +1054,19 @@
 
     </div>
   </div>
+
+  <!-- LIVE ORDER STATUS TRACKER SECTION -->
+  <section class="tracker-section" id="trackerSection">
+    <div class="tracker-card">
+      <h3 class="tracker-title">Track Your Order Status</h3>
+      <p class="tracker-sub">Enter your Order ID (e.g., <code>ECS-20261121-...</code>) or registered Email ID to check live processing status.</p>
+      <form class="tracker-form" onsubmit="trackOrder(event)">
+        <input type="text" id="trackQueryInput" placeholder="Enter Order ID or Client Email ID" required />
+        <button type="submit" class="btn-track" id="trackBtn">Check Status</button>
+      </form>
+      <div class="tracker-results" id="trackerResults"></div>
+    </div>
+  </section>
 
   <!-- STATUTORY RULES, IT POLICY, PORTAL RULES & DISCLAIMER SECTION -->
   <section class="legal-governance-section" id="rulesSection">
@@ -1018,6 +1175,16 @@
     <div class="footer-copy">&copy; 2026 Easy Compliance Solutions. All Rights Reserved. | Private Labour &amp; HR Compliance Consultancy</div>
   </footer>
 
+  <!-- Floating WhatsApp Help Button -->
+  <a
+    class="whatsapp-float"
+    href="https://wa.me/918511283107?text=Hi%20Easy%20Compliance%20Solutions%2C%20I%20need%20help%20with%20Form%20XV%20%26%20Form%20X%20submission."
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <span>💬 WhatsApp Help</span>
+  </a>
+
   <!-- Pop-up Modal for Quick Policy Viewing -->
   <div class="policy-modal-overlay" id="policyModal" onclick="if(event.target === this) closePolicyModal()">
     <div class="policy-modal-box">
@@ -1030,8 +1197,21 @@
   </div>
 
   <script>
-    // Connected Google Apps Script Web App URL:
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxjDlINFANNv4pA-pRRYVRBN2ycbnm0lc6NsW6g74THqMRLQPpf4mnABDG6J0Q00j9myQ/exec";
+    // Google Sheet & Drive Web App URL:
+    const SHEET_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyXGnM_CUxU7_MN5yElMtKHHGZy_Qlf4wIeH-gDZdU8uBiAD-J8xtCc_NUQNRDkc1DDvQ/exec";
+
+    // One-Click Copy Helper
+    function copyText(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.innerText;
+        btn.innerText = "Copied!";
+        btn.classList.add("copied");
+        setTimeout(() => {
+          btn.innerText = original;
+          btn.classList.remove("copied");
+        }, 1800);
+      });
+    }
 
     // Policy Modal Data & Functions
     const POLICY_CONTENT = {
@@ -1098,10 +1278,15 @@
       document.getElementById("policyModal").style.display = "none";
     }
 
-    // 1. Live Payment Date & Time
-    function updateClock() {
+    // 1. Live Payment Date & Time (IST)
+    function getISTDate() {
       const now = new Date();
-      document.getElementById("paymentTime").value = now.toLocaleString("en-IN", {
+      return new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (5.5 * 60 * 60 * 1000));
+    }
+
+    function updateClock() {
+      const ist = getISTDate();
+      document.getElementById("paymentTime").value = ist.toLocaleString("en-IN", {
         dateStyle: "medium",
         timeStyle: "medium"
       });
@@ -1160,7 +1345,16 @@
     }
     calculateTotal();
 
-    // 4. Helper to read file as Base64
+    // 4. Generate Client-Side Order ID (IST)
+    function generateOrderId() {
+      const ist = getISTDate();
+      const pad = n => String(n).padStart(2, "0");
+      const datePart = `${ist.getFullYear()}${pad(ist.getMonth() + 1)}${pad(ist.getDate())}`;
+      const timePart = `${pad(ist.getHours())}${pad(ist.getMinutes())}${pad(ist.getSeconds())}`;
+      return `ECS-${datePart}-${timePart}`;
+    }
+
+    // 5. Helper to read file as Base64
     function readFileAsBase64(file) {
       return new Promise((resolve, reject) => {
         if (!file) return resolve(null);
@@ -1175,13 +1369,14 @@
       });
     }
 
-    // 5. Form Submission Handler -> Google Drive + Google Sheet + Success Screen
+    // 6. Form Submission Handler (Reads Server Confirmation & Preserves Exact Order ID)
     document.getElementById("clientOrderForm").addEventListener("submit", async function (e) {
       e.preventDefault();
 
       const submitBtn = document.getElementById("submitBtn");
       const statusText = document.getElementById("statusText");
 
+      const clientOrderId = generateOrderId();
       const companyName = document.getElementById("companyName").value.trim();
       const paymentTime = document.getElementById("paymentTime").value;
       const personCount = document.getElementById("personCount").value;
@@ -1206,6 +1401,7 @@
         ]);
 
         const payload = {
+          orderId: clientOrderId,
           companyName,
           paymentTime,
           personCount,
@@ -1218,36 +1414,90 @@
           receiptFile: receiptPayload
         };
 
-        await fetch(GOOGLE_SCRIPT_URL, {
+        const response = await fetch(SHEET_SCRIPT_URL, {
           method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(payload)
         });
+
+        const result = await response.json();
+        if (result.status !== "success") {
+          throw new Error(result.message || "Server rejected submission.");
+        }
+
+        const confirmedOrderId = result.orderId || clientOrderId;
 
         // Show Client Success Message
         document.getElementById("formContainer").style.display = "none";
         document.getElementById("successScreen").style.display = "block";
         document.getElementById("confirmEmailDisplay").innerText = clientEmail;
         document.getElementById("receiptSummary").innerHTML = `
+          <div><strong>Order ID:</strong> <span style="color:#1d4ed8; font-weight:800;">${confirmedOrderId}</span> <button type="button" class="btn-copy" onclick="copyText('${confirmedOrderId}', this)">Copy ID</button></div>
           <div><strong>Company Name:</strong> ${companyName}</div>
           <div><strong>Uploaded Wage Sheet:</strong> ${excelFile.name}</div>
           <div><strong>Submission Time:</strong> ${paymentTime}</div>
           <div><strong>Persons Count:</strong> ${personCount} (Both Form XV &amp; Form X)</div>
           <div><strong>Amount Paid:</strong> ₹${amountPaid}</div>
           <div><strong>Delivery Mail ID:</strong> ${clientEmail}</div>
-          <div><strong>Status:</strong> Saved to Google Drive &amp; Logged (Delivery within 1 hour)</div>
+          <div><strong>Status:</strong> Saved to Google Drive (Order_Easy) &amp; Logged (Delivery within 1 hour)</div>
         `;
+
+        // Pre-fill Order Tracker with exact Order ID
+        document.getElementById("trackQueryInput").value = confirmedOrderId;
 
       } catch (err) {
         statusText.style.color = "#dc2626";
-        statusText.innerText = "Upload failed. Please check file sizes and internet connection, then try again.";
+        statusText.innerText = "Upload failed: " + err.message;
         submitBtn.disabled = false;
         submitBtn.innerText = "Submit Details & Payment Receipt";
       }
     });
 
-    // 6. Download Sample Excel Format
+    // 7. Live Order Status Tracker
+    async function trackOrder(e) {
+      e.preventDefault();
+      const query = document.getElementById("trackQueryInput").value.trim();
+      const resultsDiv = document.getElementById("trackerResults");
+      const trackBtn = document.getElementById("trackBtn");
+      if (!query) return;
+
+      trackBtn.disabled = true;
+      trackBtn.innerText = "Checking...";
+      resultsDiv.innerHTML = `<div style="color:#475569;">Searching order records...</div>`;
+
+      try {
+        const res = await fetch(`${SHEET_SCRIPT_URL}?action=track&query=${encodeURIComponent(query)}`);
+        const data = await res.json();
+
+        if (data.status === "success" && data.orders && data.orders.length > 0) {
+          resultsDiv.innerHTML = data.orders.map(o => {
+            const st = (o.orderStatus || "PENDING").toUpperCase();
+            const badgeClass = st === "COMPLETED" ? "status-completed" : (st === "IN PROGRESS" ? "status-progress" : "status-pending");
+            return `
+              <div class="track-item">
+                <div>
+                  <div><strong>${o.orderId}</strong> — ${o.companyName}</div>
+                  <div style="font-size:12px; color:#475569;">
+                    Submitted: ${o.submittedAt} | ${o.personCount} Person(s) | Paid: ₹${o.amountPaid}
+                    ${o.completedAt ? ` | Completed: ${o.completedAt}` : ""}
+                  </div>
+                </div>
+                <span class="status-pill ${badgeClass}">${st}</span>
+              </div>
+            `;
+          }).join("");
+        } else {
+          resultsDiv.innerHTML = `<div style="color:#b45309; font-weight:600;">${data.message || "No matching order found."}</div>`;
+        }
+      } catch (err) {
+        resultsDiv.innerHTML = `<div style="color:#dc2626;">Unable to fetch order status right now. Please try again shortly.</div>`;
+      } finally {
+        trackBtn.disabled = false;
+        trackBtn.innerText = "Check Status";
+      }
+    }
+
+    // 8. Download Sample Excel Format
     function downloadWageFormat() {
       const sampleData = [
         {
